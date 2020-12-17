@@ -1,0 +1,32 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+<EditForm Model="demo">
+    Car Type:
+    <InputRadioGroup Name="carType" @bind-Value="demo.TypeOfCar">  
+        @foreach (var c in (CarType[])Enum.GetValues(typeof(CarType)))
+        {
+            <InputRadio Value="c">
+                @c
+            </InputRadio>
+            <br/>
+        }
+    </InputRadioGroup>
+    User Age:
+    <InputRadioGroup Name="age" @bind-Value="demo.age">
+        @for (int i = 21; i < 31; i++)
+        {
+            <InputRadio Value="i">
+                @i
+            </InputRadio>
+        }
+    </InputRadioGroup>
+</EditForm>
+
+@code{
+   private DemoModel demo = new();
+}
